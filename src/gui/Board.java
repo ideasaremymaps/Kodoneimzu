@@ -124,7 +124,7 @@ public class Board {
 		jezik.add(japK);
 		JMenu game = new JMenu("Igra");
 		game.setMnemonic('I');
-		JMenuItem refresh = new JMenuItem("OsvjeĹľi rijeÄŤi");
+		JMenuItem refresh = new JMenuItem("Osvježi riječi");
 		refresh.setAccelerator(KeyStroke.getKeyStroke('R', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		refresh.addActionListener(l -> {
 			try {
@@ -138,13 +138,13 @@ public class Board {
 		help.setAccelerator(KeyStroke.getKeyStroke('U', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		help.addActionListener(l -> {
 			JOptionPane.showMessageDialog(frame,
-					"Igra se igra ovako:\n\n" + "" + "Postoje crveni i plavi tim s igraÄŤima i spymasterima.\n"
+					"Igra se igra ovako:\n\n" + "" + "Postoje crveni i plavi tim s igračima i spymasterima.\n"
 							+ "Spymasteri vide koja polja su crvena, koja plava, koja neutralna te gdje je ubojica.\n"
 							+ "(Za to postoje posebne kartice te se ne vidi u aplikaciji.)\n"
-							+ "Spymaster tima na redu zadaje JEDNU rijeÄŤ i broj.\n"
-							+ "Broj znaÄŤi broj kartica na koje se asocijacija odnosi.\n"
-							+ "ÄŚlanovi tima moraju pogoditi na koje je kartice mislio. Imaju broj pogodaka jednak zadanom broju plus jedan.\n"
-							+ "Njihov red zavrĹˇava kad nalete na boju koja nije njihova.\n"
+							+ "Spymaster tima na redu zadaje JEDNU riječ i broj.\n"
+							+ "Broj znači broj kartica na koje se asocijacija odnosi.\n"
+							+ "Članovi tima moraju pogoditi na koje je kartice mislio. Imaju broj pogodaka jednak zadanom broju plus jedan.\n"
+							+ "Njihov red završava kad nalete na boju koja nije njihova.\n"
 							+ "Ako nalete na ubojicu (crno), izgubili su.\n",
 					"Codenames uputa", JOptionPane.INFORMATION_MESSAGE);
 		});
