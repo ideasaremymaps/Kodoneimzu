@@ -34,7 +34,7 @@ public class Board {
 
 	public Board(Map map) throws IOException {
 		int fieldNum = map.getFieldNum();
-		frame = new JFrame("Kodoneimzu || ă‚łă�Ľă�‰ă�Ťă�Ľă� ");
+		frame = new JFrame("Kodoneimzu || コードネーム ");
 		URL url = Board.class.getResource("/icon.png");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(url));
 		frame.setSize(fieldNum * 270, fieldNum * 200);
