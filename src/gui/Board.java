@@ -1,7 +1,10 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -31,13 +34,14 @@ public class Board {
 	public JPanel squares[][];
 	public JLabel picLabel;
 	public static JButton button;
+	public static JLabelRotate buttonM;
 
 	public Board(Map map) throws IOException {
 		int fieldNum = map.getFieldNum();
 		frame = new JFrame("Kodoneimzu || コードネーム ");
 		URL url = Board.class.getResource("/icon.png");
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(url));
-		frame.setSize(fieldNum * 270, fieldNum * 200);
+		frame.setSize(fieldNum * 260, fieldNum * 200);
 
 		JMenuBar menu = new JMenuBar();
 		JMenu jezik = new JMenu("Jezik");
@@ -165,12 +169,19 @@ public class Board {
 		for (int i = 0; i < fieldNum; i++) {
 			for (int j = 0; j < fieldNum; j++) {
 				squares[i][j] = new JPanel();
+				squares[i][j].setLayout(new BorderLayout());
 				picLabel = new JLabel();
 				button = new JButton(map.fieldFind(i, j).getWord().toUpperCase());
 				button.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 28));
 				button.setBackground(new Color(230, 230, 230));
 				button.setBorder(null);
 				button.addActionListener(new MouseListenerCD(button, squares[i][j], picLabel));
+
+				JLabelRotate buttonM = new JLabelRotate();
+				buttonM.setText(map.fieldFind(i, j).getWord().toUpperCase());
+				buttonM.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 28));
+				buttonM.setForeground(new Color(130, 130, 130));
+
 				// int z = i;
 				// int y = j;
 				// squares[z][y].addMouseListener(new MouseAdapter() {
@@ -180,9 +191,10 @@ public class Board {
 				// button.doClick();
 				// };
 				// });
-				squares[i][j].add(button);
-				squares[i][j].add(picLabel);
-				squares[i][j].setBackground(Color.white);
+
+				squares[i][j].add(button, BorderLayout.NORTH);
+				squares[i][j].add(picLabel, BorderLayout.CENTER);
+				squares[i][j].add(buttonM, BorderLayout.SOUTH);
 				squares[i][j].setBorder(BorderFactory.createLineBorder(Color.black, 1));
 				grid.addKeyListener(new KeyListenerCD());
 				grid.add(squares[i][j]);
@@ -206,6 +218,14 @@ public class Board {
 
 	public static void closeWindow() {
 		frame.setVisible(false);
+	}
+
+	protected class JLabelRotate extends JLabel {
+		protected void paintComponent(Graphics g) {
+			Graphics2D g2 = (Graphics2D) g;
+			g2.rotate(Math.toRadians(180), 120, 15);
+			super.paintComponent(g2);
+		}
 	}
 
 }
