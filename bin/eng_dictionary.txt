@@ -1575,7 +1575,6 @@ hello
 helmet
 help
 helpful
-hence
 herb
 here
 heritage
@@ -3363,7 +3362,6 @@ toll
 tomato
 tone
 tongue
-too
 tool
 tooth
 top
